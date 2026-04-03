@@ -1,0 +1,32 @@
+locals {
+  env        = "shared-services"
+  env_type   = "prod"
+  aws_region = "eu-west-1"
+
+  # Existing VPC not managed by this Terraform root — imported separately
+  existing_vpc_id = "vpc-xxxxxxxxxxxxxxxxx"
+
+  az_number = 2
+
+  # VPC routing
+  route_to_tgw      = true
+  enable_nat_gateway = false
+
+  connect_to_datacentre = true
+
+  # Cost allocation / governance tags applied to every resource
+  provisioning_parameters = [
+    {
+      key   = "Environment"
+      value = local.env
+    },
+    {
+      key   = "pEnvType"
+      value = local.env_type
+    },
+    {
+      key   = "NetmaskLength"
+      value = "24"
+    }
+  ]
+}
