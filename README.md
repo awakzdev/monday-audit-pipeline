@@ -24,7 +24,7 @@ Terraform / Terragrunt module that provisions the AWS infrastructure for a Monda
 
 | Component | Purpose |
 |---|---|
-| **Lambda** | Python 3.11 function that calls the Monday.com GraphQL API and writes log objects to S3 |
+| **Lambda** | Python 3.11 function that calls the Monday.com API and writes log objects to S3 |
 | **Secrets Manager** | Stores the Monday.com API key (Read-only). Key is rotated **manually**; injected at runtime via `SECRET_NAME` / `SECRET_ARN` env vars |
 | **KMS (CMK)** | Envelope-encrypts the Secrets Manager secret; automatic annual key rotation enabled |
 | **VPC Endpoints** | Allow Lambda to reach Secrets Manager and other AWS APIs without traversing the internet |
