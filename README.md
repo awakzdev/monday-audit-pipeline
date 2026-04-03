@@ -114,5 +114,4 @@ aws secretsmanager put-secret-value \
 ## Notes
 
 - This module was extracted and sanitised from a production shared-services account inside a large enterprise landing zone. Internal module sources, account IDs, VPC IDs, and organisation-specific tags have been replaced with generic placeholders.
-- The Lambda function source code is not included in this repository.
 - The Monday.com API key is rotated manually; an operational runbook for rotation is maintained separately.
