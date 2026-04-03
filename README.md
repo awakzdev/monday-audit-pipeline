@@ -13,7 +13,7 @@ Terraform / Terragrunt module that provisions the AWS infrastructure for a Monda
 | Step | Description |
 |------|-------------|
 | **①** | Lambda starts and retrieves the Monday.com API key from Secrets Manager via a **VPC Endpoint** (traffic never leaves the AWS network) |
-| **②** | Lambda calls the Monday.com GraphQL API. Outbound traffic routes through the **Transit Gateway → Inspection VPC (Firewall) → Egress VPC (NAT Gateway) → Internet** |
+| **②** | Lambda calls the Monday.com API. Outbound traffic routes through the **Transit Gateway → Inspection VPC (Firewall) → Egress VPC (NAT Gateway) → Internet** |
 | **③** | Retrieved log objects are written to the hardened **S3 archive bucket** |
 | **④** | S3 emits an **Event Notification** to SQS; SIEM polls the queue to detect new log arrivals |
 | **⑤** |  SIEM reads log objects directly from S3 using a **dedicated IAM User** scoped to `s3:GetObject` on the archive bucket |
